@@ -1,2 +1,5 @@
 # pysteutils
-python shell library
+python utilities
+
+* steshell.py
+  * execute shell command in python scripts
