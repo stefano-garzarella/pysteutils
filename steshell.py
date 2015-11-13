@@ -1,22 +1,22 @@
 from __future__ import absolute_import, division, print_function, unicode_literals #for python2 compatibility
 import subprocess
 
-class PyShell():
+class SteShell():
     """
     Execute shell command in python scripts.
 
     Example:
 
-    from pysteutils.steshell import PyShell
+    from pysteutils.steshell import SteShell
 
-    pyshell = PyShell()
+    ss = SteShell()
     # get command output (stdout and stderr) as list of strings
-    out, err = pyshell.sh('ls -l *.txt')
-    out, err = pyshell.bash('ls -l *.txt')
+    out, err = ss.sh('ls -l *.txt')
+    out, err = ss.bash('ls -l *.txt')
 
     # print output (stdout and stderr) during execution
-    pyshell.ish('grep -rin asd /')
-    pyshell.ibash('grep -rin asd /')
+    ss.ish('grep -rin asd /')
+    ss.ibash('grep -rin asd /')
 
     """
 
