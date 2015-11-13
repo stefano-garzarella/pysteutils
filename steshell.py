@@ -118,5 +118,3 @@ class PyShell():
         process = subprocess.Popen(cmd_a, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in process.stdout:
             print(line.decode(), end='')
-
-        return
