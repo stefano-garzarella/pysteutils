@@ -20,10 +20,18 @@ class PyShell():
 
     """
 
-    def __init__(self):
-        pass
+    logger = None
 
-    def sh(self, cmd, logger = None):
+    def __init__(self, logger = None):
+        """
+        Constructor
+
+        :type Logger
+        :param logger: object to use for debug or logging
+        """
+        self.logger = logger
+
+    def sh(self, cmd):
         """
         Execute a shell command and return the stdout and the
         stderr as a list of lines.
@@ -34,9 +42,9 @@ class PyShell():
         :return: The stdout and stderr as a list of lines.
         """
         sh_cmd = ['sh', '-c', cmd]
-        return self.cmda(sh_cmd, logger)
+        return self.cmda(sh_cmd)
 
-    def ish(self, cmd, logger = None):
+    def ish(self, cmd):
         """
         Interactive shell command execution.
 
@@ -47,9 +55,9 @@ class PyShell():
         :param logger: TO-DO
         """
         sh_cmd = ['sh', '-c', cmd]
-        return self.icmda(sh_cmd, logger)
+        return self.icmda(sh_cmd)
 
-    def bash(self, cmd, logger = None):
+    def bash(self, cmd):
         """
         Execute a bash command and return the stdout and the
         stderr as a list of lines.
@@ -60,9 +68,9 @@ class PyShell():
         :return: The stdout and stderr as a list of lines.
         """
         bash_cmd = ['bash', '-c', cmd]
-        return self.cmda(bash_cmd, logger)
+        return self.cmda(bash_cmd)
 
-    def ibash(self, cmd, logger = None):
+    def ibash(self, cmd):
         """
         Interactive bash command execution.
         Execute a bash command and
@@ -73,12 +81,12 @@ class PyShell():
         :param logger: TO-DO
         """
         bash_cmd = ['bash', '-c', cmd]
-        return self.icmda(bash_cmd, logger)
+        return self.icmda(bash_cmd)
 
 
     ######################### utilities #########################
 
-    def cmda(self, cmd_a, logger = None):
+    def cmda(self, cmd_a):
         """
          Executes an array of commands and return both the stdout
             and stderror as a list of line.
@@ -87,29 +95,30 @@ class PyShell():
         :param logger: TO-DO
         :return: The stdout and stderr as a list of lines.
         """
-        if logger != None:
-            logger.getChild('steshell.icmda').info(cmd_a)
+        if self.logger != None:
+            self.logger.getChild('steshell.icmda').info(cmd_a)
 
         process = subprocess.Popen(cmd_a, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         ret = process.communicate()
         shout = ret[0].decode()
         sherr = ret[1].decode()
 
-        if logger != None:
-            logger.getChild('steshell.cmda').info("out: " + shout)
-            logger.getChild('steshell.cmda').info("out: " + sherr)
+        if self.logger != None:
+            self.logger.getChild('steshell.cmda').info("out: " + shout)
+            self.logger.getChild('steshell.cmda').info("out: " + sherr)
 
         return shout.splitlines(), sherr.splitlines()
 
-    def icmda(self, cmd_a, logger = None):
-        """ Executes an array of commands and print output (both stdout and stderr)
+    def icmda(self, cmd_a):
+        """
+        Executes an array of commands and print output (both stdout and stderr)
         during the execution.
 
         :param cmd_a:  array of commands
         :param logger: TO-DO
         """
-        if logger != None:
-            logger.getChild('steshell.cmda').info(cmd_a)
+        if self.logger != None:
+            self.logger.getChild('steshell.cmda').info(cmd_a)
 
         process = subprocess.Popen(cmd_a, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in process.stdout:
