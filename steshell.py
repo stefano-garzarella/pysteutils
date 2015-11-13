@@ -1,5 +1,9 @@
 import subprocess
 
+#
+# execute shell command in python scripts
+#
+
 #   Example:
 #
 #   import steshell as ss
