@@ -7,7 +7,7 @@ class PyShell():
 
     Example:
 
-    from pysteutils import PyShell
+    from pysteutils.steshell import PyShell
 
     pyshell = PyShell()
     # get command output (stdout and stderr) as list of strings
@@ -38,8 +38,7 @@ class PyShell():
 
         :type cmd: String
         :param cmd:  a shell command string
-        :param logger: TO-DO
-        :return: The stdout and stderr as a list of lines.
+        :return: the stdout and stderr as a list of lines.
         """
         sh_cmd = ['sh', '-c', cmd]
         return self.cmda(sh_cmd)
@@ -51,8 +50,8 @@ class PyShell():
         Execute a shell command and return the stdout and the
         stderr as a list of lines and print output stdout and stderr during execution).
 
+        :type cmd: String
         :param cmd:  a shell command string
-        :param logger: TO-DO
         """
         sh_cmd = ['sh', '-c', cmd]
         return self.icmda(sh_cmd)
@@ -64,8 +63,7 @@ class PyShell():
 
         :type cmd: String
         :param cmd:  a bash command string
-        :param logger: TO-DO
-        :return: The stdout and stderr as a list of lines.
+        :return: the stdout and stderr as a list of lines.
         """
         bash_cmd = ['bash', '-c', cmd]
         return self.cmda(bash_cmd)
@@ -78,7 +76,6 @@ class PyShell():
 
         :type cmd: String
         :param cmd:  a bash command string
-        :param logger: TO-DO
         """
         bash_cmd = ['bash', '-c', cmd]
         return self.icmda(bash_cmd)
@@ -92,8 +89,7 @@ class PyShell():
             and stderror as a list of line.
 
         :param cmd_a:  array of commands
-        :param logger: TO-DO
-        :return: The stdout and stderr as a list of lines.
+        :return: the stdout and stderr as a list of lines.
         """
         if self.logger != None:
             self.logger.getChild('steshell.icmda').info(cmd_a)
@@ -115,7 +111,6 @@ class PyShell():
         during the execution.
 
         :param cmd_a:  array of commands
-        :param logger: TO-DO
         """
         if self.logger != None:
             self.logger.getChild('steshell.cmda').info(cmd_a)
