@@ -2,7 +2,7 @@
 python utilities
 
 * steshell.py
-  * execute shell command in python scripts
+  * execute shell command in python scripts with bash or sh interpreters
   * example:
   ```
     from pysteutils.steshell import SteShell
@@ -17,4 +17,4 @@ python utilities
     ss.ibash('grep -rin asd /')
 ```
 * stelogger.py
-  * create simple application logger (on file)
+  * simple application logger (on file)
